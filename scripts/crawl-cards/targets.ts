@@ -50,25 +50,40 @@ export const CRAWL_TARGETS: CrawlTarget[] = [
     issuerId: "hyundai",
     issuerName: "현대카드",
     robotsTxtUrl: "https://www.hyundaicard.com/robots.txt",
-    sampleUrl: "https://www.hyundaicard.com/",
-    status: "uncertain",
-    note: "지정된 봇(Yeti/Googlebot/Bingbot/Claude-SearchBot/GPTBot 등)에게만 세부 경로를 허용. 범용 User-Agent 기준 규칙이 불명확해 실행 전 재확인 필요.",
+    // 재확인 결과: robots.txt에 "User-agent: *" 규칙 자체가 없고, 특정
+    // 검색엔진/AI봇들만 하나의 그룹으로 묶여 Allow 되어 있다. robots.txt
+    // 명세상 어떤 그룹에도 매칭되지 않는 User-Agent는 규칙이 적용되지
+    // 않아(=제한 없음) 사실상 허용으로 판정된다 (robots-parser로 실제
+    // 후보 URL에 대해 검증 완료). 다만 서버가 구식 TLS 재협상을 요구해
+    // Node 기본 fetch가 실패하므로 http-fetch.ts의 폴백을 통해 접속한다.
+    sampleUrl: "https://www.hyundaicard.com/cpc/ma/CPCMA0101_01.hc",
+    status: "allowed",
+    note: "robots.txt에 User-agent: * 없음(지정 봇 그룹만 존재) → 미지정 봇은 규칙 미적용으로 허용 판정. 서버가 구식 TLS 재협상을 요구해 별도 폴백 필요.",
   },
   {
     issuerId: "hana",
     issuerName: "하나카드",
     robotsTxtUrl: "https://www.hanacard.co.kr/robots.txt",
-    sampleUrl: "https://www.hanacard.co.kr/",
-    status: "uncertain",
-    note: "Googlebot/Yeti 등 지정 봇에게만 다수의 .web 페이지를 Allow. 범용 User-Agent에 대한 명시적 규칙이 불명확.",
+    // 재확인 결과: Googlebot/Yeti/Yetibot 그룹만 있고 "User-agent: *"가
+    // 없다 → 현대카드와 같은 이유로 허용 판정 (robots-parser로 실제
+    // 카드 상세페이지 URL에 대해 검증 완료).
+    sampleUrl:
+      "https://www.hanacard.co.kr/OPI41000000D.web?schID=pcd&mID=PI41016947P&CD_PD_SEQ=16947",
+    status: "allowed",
+    note: "robots.txt에 User-agent: * 없음(Googlebot/Yeti 그룹만 존재) → 미지정 봇은 규칙 미적용으로 허용 판정.",
   },
   {
     issuerId: "woori",
     issuerName: "우리카드",
     robotsTxtUrl: "https://pc.wooricard.com/robots.txt",
-    sampleUrl: "https://pc.wooricard.com/",
-    status: "uncertain",
-    note: "AI 검색봇(OAI-SearchBot 등)은 허용하면서 GPTBot/ClaudeBot/Google-Extended는 Disallow: / 로 명시 차단. 범용 User-Agent 규칙 재확인 필요.",
+    // 재확인 결과: "User-agent: *" 규칙이 있고 /dcmw/ 전체를 Disallow하지만,
+    // 카드 관련 페이지 다수(/dcmw/yh1/crd/... 등)를 명시적으로 다시 Allow
+    // 해뒀다. GPTBot/ClaudeBot/Google-Extended만 별도로 완전 차단하는데,
+    // 우리 크롤러는 그 이름들에 해당하지 않으므로 "*" 규칙이 적용되어
+    // 카드 상세페이지 경로는 허용된다 (robots-parser로 검증 완료).
+    sampleUrl: "https://pc.wooricard.com/dcmw/yh1/crd/crd01/M1CRD201S00.do",
+    status: "allowed",
+    note: "User-agent: * 기준 /dcmw/는 기본 차단이지만 카드 관련 페이지가 명시적으로 재허용됨. GPTBot/ClaudeBot 등 특정 AI 학습봇만 별도로 완전 차단.",
   },
   {
     issuerId: "samsung",

@@ -1,4 +1,5 @@
 import robotsParser from "robots-parser";
+import { fetchText } from "./http-fetch";
 
 // 실제 신원과 연락처를 밝히는 User-Agent. 검색엔진/AI 봇을 사칭하지 않는다 —
 // 각 카드사 robots.txt는 봇 종류별로 다른 정책을 적용하므로, 사칭은 그 사이트가
@@ -19,9 +20,7 @@ export async function checkRobotsAllowed(
   robotsTxtUrl: string,
   targetUrl: string
 ): Promise<RobotsCheckResult> {
-  const res = await fetch(robotsTxtUrl, {
-    headers: { "User-Agent": CRAWLER_USER_AGENT },
-  });
+  const res = await fetchText(robotsTxtUrl, { "User-Agent": CRAWLER_USER_AGENT });
 
   if (!res.ok) {
     return {
@@ -30,7 +29,7 @@ export async function checkRobotsAllowed(
     };
   }
 
-  const body = await res.text();
+  const body = res.text;
   const robots = robotsParser(robotsTxtUrl, body);
   const allowed = robots.isAllowed(targetUrl, CRAWLER_USER_AGENT);
 

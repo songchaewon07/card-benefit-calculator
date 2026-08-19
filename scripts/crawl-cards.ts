@@ -20,6 +20,7 @@ import { CRAWL_TARGETS } from "./crawl-cards/targets";
 import { checkRobotsAllowed, CRAWLER_USER_AGENT } from "./crawl-cards/robots";
 import { createRateLimiter } from "./crawl-cards/rate-limiter";
 import { extractCardDraft } from "./crawl-cards/extract";
+import { fetchText } from "./crawl-cards/http-fetch";
 
 // 호스트당 최소 요청 간격. dry-run은 대상당 요청이 1건뿐이라 큰 의미는 없지만,
 // 이후 페이지네이션 등으로 확장할 때도 기본값이 안전하도록 넉넉하게 둔다.
@@ -71,10 +72,10 @@ async function main() {
     await wait();
     console.log(`  요청: GET ${target.sampleUrl}`);
 
-    let res: Response;
+    let res: { ok: boolean; status: number; text: string };
     try {
-      res = await fetch(target.sampleUrl, {
-        headers: { "User-Agent": CRAWLER_USER_AGENT },
+      res = await fetchText(target.sampleUrl, {
+        "User-Agent": CRAWLER_USER_AGENT,
       });
     } catch (error) {
       console.log(`  ⚠ 요청 실패: ${(error as Error).message}`);
@@ -87,7 +88,7 @@ async function main() {
       continue;
     }
 
-    const html = await res.text();
+    const html = res.text;
     const draft = extractCardDraft(target.issuerId, target.sampleUrl, html);
 
     console.log(`  페이지 제목: ${draft.pageTitle ?? "(없음)"}`);

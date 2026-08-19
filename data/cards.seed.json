@@ -349,5 +349,57 @@
       "lastUpdatedAt": "2026-08-19",
       "referenceUrl": "https://www.shinhancard.com/pconts/html/card/apply/check/1187959_2206.html"
     }
+  },
+  {
+    "id": "card-hana-wonder2-freeplus",
+    "issuer": "하나카드",
+    "name": "원더카드 2.0 FREE+",
+    "cardType": "credit",
+    "annualFee": 0,
+    "note": "전가맹점 0.8% 기본혜택은 원래 전월실적 조건이 없지만, 배달앱/온라인쇼핑/오픈마켓/택시 4% 보너스는 전월 40만원 이상 실적이 필요합니다. 이 계산기는 카드 하나에 실적 조건을 하나만 적용할 수 있어 40만원 기준으로 통일했고, 그 결과 40만원 미만 소비 시 전가맹점 기본혜택도 0원으로 표시됩니다(실제보다 과소평가). 또한 배달앱/온라인쇼핑/택시 한도는 전월실적이 늘수록 최대 10,000원까지 커지는데, 이 계산기는 가장 낮은 구간(40~80만원)의 한도만 보수적으로 반영합니다.",
+    "performanceTiers": [{ "minSpend": 400000, "monthlyCapTotal": null }],
+    "benefitRules": [
+      {
+        "id": "card-hana-wonder2-freeplus-other",
+        "cardId": "card-hana-wonder2-freeplus",
+        "category": "other",
+        "benefitType": "discount_rate",
+        "value": 0.8,
+        "monthlyCategoryCap": null,
+        "note": "전가맹점 기본 할인 0.8%. 원래 실적기준/한도 모두 없음."
+      },
+      {
+        "id": "card-hana-wonder2-freeplus-dining",
+        "cardId": "card-hana-wonder2-freeplus",
+        "category": "dining",
+        "benefitType": "discount_rate",
+        "value": 4,
+        "monthlyCategoryCap": 4000,
+        "note": "딜리버리(배달앱) 서비스, 지난달 실적 40~80만원 구간(최소) 기준 한도. 80만원 이상이면 6,000~10,000원까지 늘어남."
+      },
+      {
+        "id": "card-hana-wonder2-freeplus-transport",
+        "cardId": "card-hana-wonder2-freeplus",
+        "category": "transport",
+        "benefitType": "discount_rate",
+        "value": 4,
+        "monthlyCategoryCap": 4000,
+        "note": "택시 서비스, 지난달 실적 40~80만원 구간(최소) 기준 한도. 80만원 이상이면 8,000~10,000원까지 늘어남."
+      },
+      {
+        "id": "card-hana-wonder2-freeplus-online",
+        "cardId": "card-hana-wonder2-freeplus",
+        "category": "online_shopping",
+        "benefitType": "discount_rate",
+        "value": 4,
+        "monthlyCategoryCap": 4000,
+        "note": "온라인식품&쇼핑+오픈마켓 통합, 지난달 실적 40~80만원 구간(최소) 기준 한도(최대 10,000원). 단 쿠팡은 별도로 2%(실적조건 없음, 통합 5만원 한도)만 적용되므로 쿠팡 위주로 소비하면 실제 혜택은 이보다 낮을 수 있습니다."
+      }
+    ],
+    "source": {
+      "origin": "crawled",
+      "lastUpdatedAt": "2026-08-19",
+      "referenceUrl": "https://www.hanacard.co.kr/OPI41000000D.web?schID=pcd&mID=PI41016947P&CD_PD_SEQ=16947"
+    }
   }
 ]
