@@ -201,5 +201,97 @@
       "origin": "manual",
       "lastUpdatedAt": "2026-08-19"
     }
+  },
+  {
+    "id": "card-kb-easyall-titanium",
+    "issuer": "KB국민카드",
+    "name": "Easy all 티타늄카드",
+    "cardType": "credit",
+    "annualFee": 30000,
+    "note": "실제 카드는 'Auto모드'로 전월실적 구간에 따라 많이 쓴 상위 1~3개 영역(그룹당)에만 캐시백이 적용됩니다. 이 계산기는 카테고리별로 항상 요율이 적용된다고 가정하므로, 소비를 여러 카테고리에 고르게 입력할수록 실제보다 혜택이 과대추정될 수 있습니다.",
+    "performanceTiers": [
+      { "minSpend": 500000, "monthlyCapTotal": 16000 },
+      { "minSpend": 1000000, "monthlyCapTotal": 32000 },
+      { "minSpend": 1500000, "monthlyCapTotal": 48000 }
+    ],
+    "benefitRules": [
+      {
+        "id": "card-kb-easyall-titanium-dining",
+        "cardId": "card-kb-easyall-titanium",
+        "category": "dining",
+        "benefitType": "discount_rate",
+        "value": 3,
+        "monthlyCategoryCap": null,
+        "note": "실제로는 일반음식점(A그룹 3%) vs 배달앱/제과·패스트푸드(D그룹 10%)로 세부 가맹점별 요율이 갈림. 과대추정을 피하려 더 낮은 A그룹 요율(3%)을 사용. 정확한 가맹점 목록은 원문 참고."
+      },
+      {
+        "id": "card-kb-easyall-titanium-cafe",
+        "cardId": "card-kb-easyall-titanium",
+        "category": "cafe",
+        "benefitType": "discount_rate",
+        "value": 10,
+        "monthlyCategoryCap": null,
+        "note": "D그룹(커피) 10%."
+      },
+      {
+        "id": "card-kb-easyall-titanium-telecom",
+        "cardId": "card-kb-easyall-titanium",
+        "category": "telecom",
+        "benefitType": "discount_rate",
+        "value": 5,
+        "monthlyCategoryCap": null,
+        "note": "B그룹(이동통신 자동이체, 건당 3만원 이상 이용 시) 5%."
+      },
+      {
+        "id": "card-kb-easyall-titanium-transport",
+        "cardId": "card-kb-easyall-titanium",
+        "category": "transport",
+        "benefitType": "discount_rate",
+        "value": 5,
+        "monthlyCategoryCap": null,
+        "note": "실제로는 주유(B그룹 5%) vs 대중교통(C그룹 7%) vs 택시(D그룹 10%)로 갈림. 과대추정을 피하려 가장 낮은 B그룹 요율(5%)을 사용."
+      },
+      {
+        "id": "card-kb-easyall-titanium-online",
+        "cardId": "card-kb-easyall-titanium",
+        "category": "online_shopping",
+        "benefitType": "discount_rate",
+        "value": 5,
+        "monthlyCategoryCap": null,
+        "note": "B그룹(온라인쇼핑/소셜커머스) 5%."
+      },
+      {
+        "id": "card-kb-easyall-titanium-mart",
+        "cardId": "card-kb-easyall-titanium",
+        "category": "mart_convenience",
+        "benefitType": "discount_rate",
+        "value": 5,
+        "monthlyCategoryCap": null,
+        "note": "실제로는 마트(B그룹 5%) vs 편의점(C그룹 7%)로 갈림. 과대추정을 피하려 더 낮은 B그룹 요율(5%)을 사용."
+      },
+      {
+        "id": "card-kb-easyall-titanium-subscription",
+        "cardId": "card-kb-easyall-titanium",
+        "category": "subscription",
+        "benefitType": "discount_rate",
+        "value": 10,
+        "monthlyCategoryCap": null,
+        "note": "D그룹(넷플릭스/티빙/웨이브/멜론/지니 등 구독, CGV/롯데시네마/메가박스 등 영화) 10%."
+      },
+      {
+        "id": "card-kb-easyall-titanium-other",
+        "cardId": "card-kb-easyall-titanium",
+        "category": "other",
+        "benefitType": "discount_rate",
+        "value": 3,
+        "monthlyCategoryCap": null,
+        "note": "교육/병원약국/해외·면세점/관리비공과금(A그룹 3%) vs 스포츠/패션·인테리어/뷰티(C그룹 7%)를 모두 'other'로 뭉뚱그림. 과대추정을 피하려 더 낮은 A그룹 요율(3%)을 사용."
+      }
+    ],
+    "source": {
+      "origin": "crawled",
+      "lastUpdatedAt": "2026-08-19",
+      "referenceUrl": "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=09256&mainCC=a"
+    }
   }
 ]

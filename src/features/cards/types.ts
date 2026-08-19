@@ -51,6 +51,12 @@ export interface Card {
   performanceTiers: PerformanceTier[];
   benefitRules: BenefitRule[];
   source: CardDataSource;
+  /**
+   * 계산 결과의 신뢰도에 영향을 주는 카드 단위 주의사항 (예: 실제로는
+   * 소비 상위 N개 영역에만 자동 적용되는 카드라 우리 모델이 과대추정할 수
+   * 있는 경우). 있으면 카드 선택/결과 화면에 노출한다.
+   */
+  note?: string;
 }
 
 export interface UserSelection {

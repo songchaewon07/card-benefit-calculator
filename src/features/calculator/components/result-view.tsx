@@ -90,6 +90,11 @@ export function ResultView() {
                         ? "전월실적 조건 충족"
                         : "전월실적 조건 미충족"}
                     </Badge>
+                    {result.card.note && (
+                      <p className="mt-1.5 max-w-md text-xs text-amber-600 dark:text-amber-400">
+                        ⚠ {result.card.note}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <p

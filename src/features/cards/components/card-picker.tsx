@@ -115,6 +115,11 @@ export function CardPicker() {
                     <p className="mt-1 text-sm text-zinc-500">
                       연회비 {card.annualFee.toLocaleString()}원
                     </p>
+                    {card.note && (
+                      <p className="mt-1.5 max-w-md text-xs text-amber-600 dark:text-amber-400">
+                        ⚠ {card.note}
+                      </p>
+                    )}
                   </div>
                   <Button
                     type="button"
