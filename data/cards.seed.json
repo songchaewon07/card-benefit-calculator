@@ -401,5 +401,93 @@
       "lastUpdatedAt": "2026-08-19",
       "referenceUrl": "https://www.hanacard.co.kr/OPI41000000D.web?schID=pcd&mID=PI41016947P&CD_PD_SEQ=16947"
     }
+  },
+  {
+    "id": "card-hyundai-check-cashback",
+    "issuer": "현대카드",
+    "name": "현대카드 체크(캐시백형)",
+    "cardType": "check",
+    "annualFee": 5000,
+    "note": "기본 0.3% 캐시백(전 가맹점, 실적·한도 무관)에 더해 일반음식점/배달앱/편의점/대중교통은 전월 30만원 이상 실적 시 3%가 추가로 붙어 총 3.3%가 됩니다(카테고리별 요율에 이미 합산 반영). 다만 실제로는 기본 0.3%는 한도가 없고 추가 3%만 통합 월 5,000원 한도가 있는데, 이 계산기는 카드 하나에 통합 한도를 하나만 적용할 수 있어 5,000원 한도를 전체 카테고리 합산에 적용합니다 — 여러 카테고리에 고르게 소비하면 실제보다 낮게 계산될 수 있습니다(과소평가). 또한 30만원 미만 소비 시 기본 0.3% 혜택도 0원으로 표시됩니다(과소평가).",
+    "performanceTiers": [{ "minSpend": 300000, "monthlyCapTotal": 5000 }],
+    "benefitRules": [
+      {
+        "id": "card-hyundai-check-cashback-dining",
+        "cardId": "card-hyundai-check-cashback",
+        "category": "dining",
+        "benefitType": "reward_rate",
+        "value": 3.3,
+        "monthlyCategoryCap": null,
+        "note": "일반음식점+배달앱, 기본 0.3%+추가 3% = 3.3%. 추가분 3%만 원래 통합 월 5,000원 한도가 있음(카드 단위 note 참고)."
+      },
+      {
+        "id": "card-hyundai-check-cashback-mart",
+        "cardId": "card-hyundai-check-cashback",
+        "category": "mart_convenience",
+        "benefitType": "reward_rate",
+        "value": 3.3,
+        "monthlyCategoryCap": null,
+        "note": "편의점, 기본 0.3%+추가 3% = 3.3%."
+      },
+      {
+        "id": "card-hyundai-check-cashback-transport",
+        "cardId": "card-hyundai-check-cashback",
+        "category": "transport",
+        "benefitType": "reward_rate",
+        "value": 3.3,
+        "monthlyCategoryCap": null,
+        "note": "대중교통, 기본 0.3%+추가 3% = 3.3%."
+      },
+      {
+        "id": "card-hyundai-check-cashback-cafe",
+        "cardId": "card-hyundai-check-cashback",
+        "category": "cafe",
+        "benefitType": "reward_rate",
+        "value": 0.3,
+        "monthlyCategoryCap": null,
+        "note": "보너스 카테고리 아님, 기본 0.3%만 적용."
+      },
+      {
+        "id": "card-hyundai-check-cashback-telecom",
+        "cardId": "card-hyundai-check-cashback",
+        "category": "telecom",
+        "benefitType": "reward_rate",
+        "value": 0.3,
+        "monthlyCategoryCap": null,
+        "note": "보너스 카테고리 아님, 기본 0.3%만 적용."
+      },
+      {
+        "id": "card-hyundai-check-cashback-online",
+        "cardId": "card-hyundai-check-cashback",
+        "category": "online_shopping",
+        "benefitType": "reward_rate",
+        "value": 0.3,
+        "monthlyCategoryCap": null,
+        "note": "보너스 카테고리 아님, 기본 0.3%만 적용."
+      },
+      {
+        "id": "card-hyundai-check-cashback-subscription",
+        "cardId": "card-hyundai-check-cashback",
+        "category": "subscription",
+        "benefitType": "reward_rate",
+        "value": 0.3,
+        "monthlyCategoryCap": null,
+        "note": "보너스 카테고리 아님, 기본 0.3%만 적용."
+      },
+      {
+        "id": "card-hyundai-check-cashback-other",
+        "cardId": "card-hyundai-check-cashback",
+        "category": "other",
+        "benefitType": "reward_rate",
+        "value": 0.3,
+        "monthlyCategoryCap": null,
+        "note": "보너스 카테고리 아님, 기본 0.3%만 적용."
+      }
+    ],
+    "source": {
+      "origin": "crawled",
+      "lastUpdatedAt": "2026-08-19",
+      "referenceUrl": "https://www.hyundaicard.com/cpc/cr/CPCCR0621_11.hc?cardflag=C"
+    }
   }
 ]

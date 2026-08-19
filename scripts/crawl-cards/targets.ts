@@ -21,6 +21,12 @@ export interface CrawlTarget {
   sampleUrl: string;
   status: CrawlTargetStatus;
   note: string;
+  /**
+   * "http"(기본값): 일반 fetch로 받은 원본 HTML을 그대로 파싱.
+   * "browser": 카드 상세 정보가 자바스크립트로 렌더링되는 사이트용 —
+   * 헤드리스 브라우저로 페이지를 열어 렌더링이 끝난 뒤의 HTML을 파싱.
+   */
+  fetchMethod?: "http" | "browser";
 }
 
 export const CRAWL_TARGETS: CrawlTarget[] = [
@@ -56,9 +62,17 @@ export const CRAWL_TARGETS: CrawlTarget[] = [
     // 않아(=제한 없음) 사실상 허용으로 판정된다 (robots-parser로 실제
     // 후보 URL에 대해 검증 완료). 다만 서버가 구식 TLS 재협상을 요구해
     // Node 기본 fetch가 실패하므로 http-fetch.ts의 폴백을 통해 접속한다.
-    sampleUrl: "https://www.hyundaicard.com/cpc/ma/CPCMA0101_01.hc",
+    // 체크카드 비교 페이지 (검증된 실제 URL). 실제 혜택 수치(연회비, 기본/
+    // 추가 캐시백률, 전월실적 조건, 통합 한도)가 렌더링된 텍스트에 그대로
+    // 나온다. 다만 <table> 태그가 아니라 div/li로 되어 있어 extract.ts의
+    // 표 추출기는 0건으로 나온다 — 이 페이지는 사람이 렌더링된 텍스트를
+    // 직접 읽어서 반영했다 (page.innerText 결과 참고).
+    sampleUrl: "https://www.hyundaicard.com/cpc/cr/CPCCR0621_11.hc?cardflag=C",
     status: "allowed",
-    note: "robots.txt에 User-agent: * 없음(지정 봇 그룹만 존재) → 미지정 봇은 규칙 미적용으로 허용 판정. 서버가 구식 TLS 재협상을 요구해 별도 폴백 필요.",
+    // 카드 상세 정보가 자바스크립트로 렌더링돼(원본 HTML에 <table> 없음)
+    // 일반 fetch로는 내용을 못 얻는다. 헤드리스 브라우저로 전환.
+    fetchMethod: "browser",
+    note: "robots.txt에 User-agent: * 없음(지정 봇 그룹만 존재) → 미지정 봇은 규칙 미적용으로 허용 판정. 서버가 구식 TLS 재협상을 요구하고, 카드 정보가 JS 렌더링이라 헤드리스 브라우저로 접속. 혜택 정보가 <table>이 아닌 div/li 레이아웃이라 자동 표 추출은 0건 — 렌더링된 텍스트를 사람이 직접 읽어야 함.",
   },
   {
     issuerId: "hana",
@@ -81,9 +95,19 @@ export const CRAWL_TARGETS: CrawlTarget[] = [
     // 해뒀다. GPTBot/ClaudeBot/Google-Extended만 별도로 완전 차단하는데,
     // 우리 크롤러는 그 이름들에 해당하지 않으므로 "*" 규칙이 적용되어
     // 카드 상세페이지 경로는 허용된다 (robots-parser로 검증 완료).
+    // robots.txt에 명시적으로 Allow 된 카드 페이지는 이 두 곳뿐이다:
+    // /dcmw/yh1/crd/crd01/M1CRD201S00.do, /dcmw/yh1/crd/crd02/M1CRD202S00.do
+    // 실제 확인해보니 헤드리스 브라우저로 열어도(메인 페이지 방문 후
+    // 세션을 확보한 채로 재시도해도) 둘 다 "현재 홈페이지 서비스가
+    // 원활하지 않습니다" 오류 화면만 나온다 — 아마 특정 카드를 지정하는
+    // 쿼리 파라미터가 더 필요한데, robots.txt가 허용하지 않은 다른 경로
+    // (예: 검색 결과에서 발견한 M1CRD101S02.do?recomNo=...)를 억지로
+    // 시도하지는 않았다. 그래서 이 URL은 여전히 샘플로 남겨두되, 크롤러
+    // 실행 시 빈 결과가 나오는 게 정상이다.
     sampleUrl: "https://pc.wooricard.com/dcmw/yh1/crd/crd01/M1CRD201S00.do",
     status: "allowed",
-    note: "User-agent: * 기준 /dcmw/는 기본 차단이지만 카드 관련 페이지가 명시적으로 재허용됨. GPTBot/ClaudeBot 등 특정 AI 학습봇만 별도로 완전 차단.",
+    fetchMethod: "browser",
+    note: "robots.txt에서 카드 페이지 2곳(crd01/crd02)을 명시적으로 허용하지만, 실제로는 둘 다 파라미터 없이 접속하면 애플리케이션 오류 화면만 나옴(로봇 차단 아님). 카드를 특정하는 파라미터를 알아내지 못해 현재는 데이터 추출 불가.",
   },
   {
     issuerId: "samsung",

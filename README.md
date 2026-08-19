@@ -30,16 +30,17 @@ npm run test    # vitest 단위 테스트 (계산 엔진, 스토어 안전장치
 
 ## 데이터 갱신
 
-`data/cards.seed.json`은 대부분 계산 엔진 검증용 가상 데이터이지만, 신한카드·KB국민카드·하나카드는 실제 카드사 공식 페이지를 크롤링해 반영한 실제 카드입니다 (자세한 내용/근사치 처리는 [data/README.md](./data/README.md)).
+`data/cards.seed.json`은 대부분 계산 엔진 검증용 가상 데이터이지만, 신한카드·KB국민카드·하나카드·현대카드는 실제 카드사 공식 페이지를 크롤링해 반영한 실제 카드입니다 (자세한 내용/근사치 처리는 [data/README.md](./data/README.md)).
 
 공식 API/공공데이터를 조사한 결과 카드 혜택 상세를 다루는 데이터는 없어, 카드사 공식 페이지 크롤링이 필요합니다 (조사 결과는 [data/README.md의 "Step 2 진행 상황"](./data/README.md) 참고).
 
 ```bash
-npm run crawl:cards          # robots.txt 허용된 대상(신한/KB/현대/하나/우리)에서 표 추출
-npm run crawl:cards shinhan  # 특정 카드사만 실행
+npx playwright install chromium   # 최초 1회: 헤드리스 브라우저 설치 (JS 렌더링 사이트용)
+npm run crawl:cards               # robots.txt 허용된 대상(신한/KB/현대/하나/우리)에서 표 추출
+npm run crawl:cards shinhan       # 특정 카드사만 실행
 ```
 
-현대카드·우리카드는 robots.txt는 허용이지만 카드 상세 정보가 자바스크립트로 렌더링돼 현재 크롤러(HTML만 요청, 브라우저 미실행)로는 표를 추출하지 못합니다.
+현대카드·우리카드는 카드 상세 정보가 자바스크립트로 렌더링돼 일반 fetch로는 못 얻어 Playwright 헤드리스 브라우저를 사용합니다 (`scripts/crawl-cards/browser-fetch.ts`). 현대카드는 이 방식으로 실제 데이터를 얻었고, 우리카드는 robots.txt가 허용하는 카드 페이지 2곳이 파라미터 없이는 애플리케이션 오류를 반환해 아직 데이터를 얻지 못했습니다 (자세한 내용은 [data/README.md](./data/README.md) 참고).
 
 - 대상/허용여부 목록: [scripts/crawl-cards/targets.ts](./scripts/crawl-cards/targets.ts)
 - 표 추출 로직: [scripts/crawl-cards/extract.ts](./scripts/crawl-cards/extract.ts) — 연회비 표, 전월실적 구간 표 등을 구조화해 `scripts/crawl-cards/output/<issuerId>.json`에 저장 (참고용 초안, git에는 커밋되지 않음)
