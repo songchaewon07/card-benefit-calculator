@@ -293,5 +293,61 @@
       "lastUpdatedAt": "2026-08-19",
       "referenceUrl": "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=09256&mainCC=a"
     }
+  },
+  {
+    "id": "card-shinhan-deepdream-check",
+    "issuer": "신한카드",
+    "name": "Deep Dream 체크 (미니언즈)",
+    "cardType": "check",
+    "annualFee": 0,
+    "note": "이 카드는 전월실적과 무관하게 전 가맹점 0.2% 포인트가 항상 적립되는 '모두드림' 혜택이 있는데, 이 계산기는 전월 20만원 미만이면 모든 혜택을 0으로 계산하므로 그 부분은 반영되지 않습니다(실제보다 과소평가될 수 있음). 반대로 DREAM 영역 중 가장 많이 쓴 1개 영역에는 추가 0.4%p(총 1.0%)가 더 붙는 '챙겨드림' 혜택이 있는데, 이 계산기는 보수적으로 그 이전 단계인 '더해드림' 요율(0.6%)까지만 모든 DREAM 카테고리에 반영합니다.",
+    "performanceTiers": [
+      { "minSpend": 200000, "monthlyCapTotal": 5000 },
+      { "minSpend": 400000, "monthlyCapTotal": 15000 },
+      { "minSpend": 800000, "monthlyCapTotal": 30000 }
+    ],
+    "benefitRules": [
+      {
+        "id": "card-shinhan-deepdream-check-mart",
+        "cardId": "card-shinhan-deepdream-check",
+        "category": "mart_convenience",
+        "benefitType": "reward_rate",
+        "value": 0.6,
+        "monthlyCategoryCap": null,
+        "note": "DREAM 영역 중 D(할인점: 이마트/홈플러스/롯데마트 등)+R(편의점·잡화: CU/GS25/세븐일레븐/올리브영/다이소) 더해드림 요율 0.6%."
+      },
+      {
+        "id": "card-shinhan-deepdream-check-cafe",
+        "cardId": "card-shinhan-deepdream-check",
+        "category": "cafe",
+        "benefitType": "reward_rate",
+        "value": 0.6,
+        "monthlyCategoryCap": null,
+        "note": "DREAM 영역 중 E(영화·커피)의 커피 부분만 반영, 더해드림 요율 0.6%. CGV/롯데시네마 영화 이용분은 별도 카테고리가 없어 반영하지 않음."
+      },
+      {
+        "id": "card-shinhan-deepdream-check-telecom",
+        "cardId": "card-shinhan-deepdream-check",
+        "category": "telecom",
+        "benefitType": "reward_rate",
+        "value": 0.6,
+        "monthlyCategoryCap": null,
+        "note": "DREAM 영역 중 M(이동통신요금 자동이체: SKT/KT/LGU+), 더해드림 요율 0.6%."
+      },
+      {
+        "id": "card-shinhan-deepdream-check-other",
+        "cardId": "card-shinhan-deepdream-check",
+        "category": "other",
+        "benefitType": "reward_rate",
+        "value": 0.6,
+        "monthlyCategoryCap": null,
+        "note": "DREAM 영역 중 A(해외 일시불 이용금액), 더해드림 요율 0.6%."
+      }
+    ],
+    "source": {
+      "origin": "crawled",
+      "lastUpdatedAt": "2026-08-19",
+      "referenceUrl": "https://www.shinhancard.com/pconts/html/card/apply/check/1187959_2206.html"
+    }
   }
 ]
