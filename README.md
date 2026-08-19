@@ -2,6 +2,8 @@
 
 보유한 카드와 소비 패턴을 입력하면 전월실적 조건과 한도까지 반영해 카드별 실제 혜택 금액을 계산해주는 웹 서비스입니다. 로그인 없이 바로 사용할 수 있습니다.
 
+배포: https://card-benefit-calculator.vercel.app
+
 기획 배경과 전체 요구사항은 [PRD.md](./PRD.md), 단계별 개발 진행 기록은 [DEV_PROMPTS.md](./DEV_PROMPTS.md)를 참고하세요.
 
 ## 실행 방법
@@ -54,7 +56,11 @@ data/                    카드/구독 시드 데이터 (JSON)
 
 ## 배포
 
-Vercel 배포를 기준으로 구성되어 있습니다 (별도 서버 설정이나 환경변수 없이 정적 빌드로 배포 가능).
+GitHub 저장소([songchaewon07/card-benefit-calculator](https://github.com/songchaewon07/card-benefit-calculator))와 Vercel을 연동해 배포되어 있습니다: https://card-benefit-calculator.vercel.app
+
+master 브랜치에 푸시하면 Vercel이 자동으로 재배포합니다 (별도 서버 설정이나 환경변수 불필요).
+
+새로 배포하려면:
 
 1. GitHub 등 원격 저장소에 푸시
 2. [Vercel](https://vercel.com)에서 저장소를 Import
