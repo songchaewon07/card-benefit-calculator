@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sub-netflix",
+    "name": "넷플릭스 (스탠다드)",
+    "category": "subscription",
+    "monthlyPrice": 13500
+  },
+  {
+    "id": "sub-youtube-premium",
+    "name": "유튜브 프리미엄",
+    "category": "subscription",
+    "monthlyPrice": 14900
+  },
+  {
+    "id": "sub-disney-plus",
+    "name": "디즈니플러스",
+    "category": "subscription",
+    "monthlyPrice": 9900
+  },
+  {
+    "id": "sub-watcha",
+    "name": "왓챠",
+    "category": "subscription",
+    "monthlyPrice": 7900
+  },
+  {
+    "id": "sub-melon",
+    "name": "멜론 스트리밍클럽",
+    "category": "subscription",
+    "monthlyPrice": 11000
+  },
+  {
+    "id": "sub-coupang-wow",
+    "name": "쿠팡 와우",
+    "category": "subscription",
+    "monthlyPrice": 7890
+  }
+]

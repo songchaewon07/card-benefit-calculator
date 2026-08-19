@@ -1,0 +1,205 @@
+[
+  {
+    "id": "card-blue-daily",
+    "issuer": "그린뱅크카드",
+    "name": "블루카드 데일리",
+    "cardType": "credit",
+    "annualFee": 10000,
+    "performanceTiers": [
+      { "minSpend": 300000, "monthlyCapTotal": 15000 },
+      { "minSpend": 600000, "monthlyCapTotal": 30000 }
+    ],
+    "benefitRules": [
+      {
+        "id": "card-blue-daily-cafe",
+        "cardId": "card-blue-daily",
+        "category": "cafe",
+        "benefitType": "reward_rate",
+        "value": 10,
+        "monthlyCategoryCap": 5000
+      },
+      {
+        "id": "card-blue-daily-online",
+        "cardId": "card-blue-daily",
+        "category": "online_shopping",
+        "benefitType": "discount_rate",
+        "value": 5,
+        "monthlyCategoryCap": 10000
+      }
+    ],
+    "source": {
+      "origin": "manual",
+      "lastUpdatedAt": "2026-08-19"
+    }
+  },
+  {
+    "id": "card-light-simple",
+    "issuer": "선샤인카드",
+    "name": "라이트카드 심플",
+    "cardType": "check",
+    "annualFee": 0,
+    "performanceTiers": [{ "minSpend": 0, "monthlyCapTotal": 5000 }],
+    "benefitRules": [
+      {
+        "id": "card-light-simple-mart",
+        "cardId": "card-light-simple",
+        "category": "mart_convenience",
+        "benefitType": "reward_rate",
+        "value": 1,
+        "monthlyCategoryCap": 3000
+      },
+      {
+        "id": "card-light-simple-transport",
+        "cardId": "card-light-simple",
+        "category": "transport",
+        "benefitType": "reward_rate",
+        "value": 1,
+        "monthlyCategoryCap": 2000
+      }
+    ],
+    "source": {
+      "origin": "manual",
+      "lastUpdatedAt": "2026-08-19"
+    }
+  },
+  {
+    "id": "card-premium-allinone",
+    "issuer": "스카이카드",
+    "name": "프리미엄카드 올인원",
+    "cardType": "credit",
+    "annualFee": 30000,
+    "performanceTiers": [
+      { "minSpend": 500000, "monthlyCapTotal": 30000 },
+      { "minSpend": 1000000, "monthlyCapTotal": 50000 }
+    ],
+    "benefitRules": [
+      {
+        "id": "card-premium-allinone-dining",
+        "cardId": "card-premium-allinone",
+        "category": "dining",
+        "benefitType": "discount_rate",
+        "value": 7,
+        "monthlyCategoryCap": 15000
+      },
+      {
+        "id": "card-premium-allinone-online",
+        "cardId": "card-premium-allinone",
+        "category": "online_shopping",
+        "benefitType": "discount_rate",
+        "value": 5,
+        "monthlyCategoryCap": 15000
+      },
+      {
+        "id": "card-premium-allinone-subscription",
+        "cardId": "card-premium-allinone",
+        "category": "subscription",
+        "benefitType": "discount_rate",
+        "value": 10,
+        "monthlyCategoryCap": 5000
+      }
+    ],
+    "source": {
+      "origin": "manual",
+      "lastUpdatedAt": "2026-08-19"
+    }
+  },
+  {
+    "id": "card-simple-cashback",
+    "issuer": "문라이트카드",
+    "name": "심플카드 캐시백",
+    "cardType": "credit",
+    "annualFee": 15000,
+    "performanceTiers": [{ "minSpend": 400000, "monthlyCapTotal": 20000 }],
+    "benefitRules": [
+      {
+        "id": "card-simple-cashback-base",
+        "cardId": "card-simple-cashback",
+        "category": "other",
+        "benefitType": "reward_rate",
+        "value": 0.7,
+        "monthlyCategoryCap": null,
+        "note": "전 가맹점 기본 적립 (카테고리 한도 없음, 통합 한도만 적용)"
+      },
+      {
+        "id": "card-simple-cashback-online",
+        "cardId": "card-simple-cashback",
+        "category": "online_shopping",
+        "benefitType": "reward_rate",
+        "value": 3,
+        "monthlyCategoryCap": 10000
+      }
+    ],
+    "source": {
+      "origin": "manual",
+      "lastUpdatedAt": "2026-08-19"
+    }
+  },
+  {
+    "id": "card-student-alttul",
+    "issuer": "스타카드",
+    "name": "학생카드 알뜰",
+    "cardType": "check",
+    "annualFee": 0,
+    "performanceTiers": [{ "minSpend": 0, "monthlyCapTotal": 5000 }],
+    "benefitRules": [
+      {
+        "id": "card-student-alttul-cafe",
+        "cardId": "card-student-alttul",
+        "category": "cafe",
+        "benefitType": "discount_rate",
+        "value": 5,
+        "monthlyCategoryCap": 3000
+      },
+      {
+        "id": "card-student-alttul-transport",
+        "cardId": "card-student-alttul",
+        "category": "transport",
+        "benefitType": "discount_rate",
+        "value": 10,
+        "monthlyCategoryCap": 2000
+      }
+    ],
+    "source": {
+      "origin": "manual",
+      "lastUpdatedAt": "2026-08-19"
+    }
+  },
+  {
+    "id": "card-travel-mileage",
+    "issuer": "호라이즌카드",
+    "name": "여행카드 마일리지",
+    "cardType": "credit",
+    "annualFee": 50000,
+    "performanceTiers": [{ "minSpend": 700000, "monthlyCapTotal": 40000 }],
+    "benefitRules": [
+      {
+        "id": "card-travel-mileage-transport",
+        "cardId": "card-travel-mileage",
+        "category": "transport",
+        "benefitType": "reward_rate",
+        "value": 3,
+        "monthlyCategoryCap": 10000
+      },
+      {
+        "id": "card-travel-mileage-online",
+        "cardId": "card-travel-mileage",
+        "category": "online_shopping",
+        "benefitType": "reward_rate",
+        "value": 2,
+        "monthlyCategoryCap": 10000
+      },
+      {
+        "id": "card-travel-mileage-subscription",
+        "cardId": "card-travel-mileage",
+        "category": "subscription",
+        "benefitType": "discount_rate",
+        "value": 5,
+        "monthlyCategoryCap": 5000
+      }
+    ],
+    "source": {
+      "origin": "manual",
+      "lastUpdatedAt": "2026-08-19"
+    }
+  }
+]
