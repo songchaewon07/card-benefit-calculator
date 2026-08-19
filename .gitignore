@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# crawler run output (raw extraction drafts, not verified data)
+/scripts/crawl-cards/output/

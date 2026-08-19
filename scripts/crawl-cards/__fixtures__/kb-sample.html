@@ -1,0 +1,62 @@
+<!--
+  KB국민카드 실제 카드 상세페이지(2026-08-19 기준)에서 발췌한 구조 샘플.
+  extract.ts의 테이블/연회비 추출 로직을 실제 페이지 구조로 검증하기 위한
+  픽스처이며, 전체 페이지가 아니라 관련 부분만 남겼다.
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>[Easy all 티타늄카드] 많이 쓴 영역에서 Auto 모드 | KB국민카드</title>
+</head>
+<body>
+  <table class="tblH" cellpadding="0" cellspacing="0" summary="Easy all 티타늄카드 서비스 요약 테이블">
+    <caption>Easy all 티타늄카드 서비스 요약</caption>
+    <thead>
+      <tr>
+        <th scope="col">구분</th>
+        <th scope="col">서비스</th>
+        <th scope="col">50만원 이상 100만원 미만</th>
+        <th scope="col">100만원 이상 150만원 미만</th>
+        <th scope="col">150만원 이상</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>선택 서비스</td>
+        <td>Auto 모드</td>
+        <td>1만 6천원</td>
+        <td>3만 2천원</td>
+        <td>4만 8천원</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="tblH" cellspacing="0" cellpadding="0" summary="연회비 테이블은 구분, 브랜드, 기본연회비(회원별), 제휴연회비(카드별), 합계로 구성되어 있습니다.">
+    <caption>연회비</caption>
+    <thead>
+      <tr>
+        <th scope="col">구분</th>
+        <th scope="col">브랜드</th>
+        <th scope="col">기본연회비 (회원별)</th>
+        <th scope="col">제휴연회비 (카드별)</th>
+        <th scope="col">합계</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row" rowspan="3">일반카드</td>
+        <td>국내전용</td>
+        <td rowspan="3">7천원</td>
+        <td rowspan="3">2만 3천원</td>
+        <td rowspan="3"><strong>3만원</strong></td>
+      </tr>
+      <tr>
+        <td class="cellLine">K-WORLD(UPI)</td>
+      </tr>
+      <tr>
+        <td class="cellLine">국내외겸용(VISA)</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

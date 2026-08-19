@@ -32,15 +32,16 @@ npm run test    # vitest 단위 테스트 (계산 엔진, 스토어 안전장치
 
 `data/cards.seed.json`, `data/subscriptions.seed.json`은 **실제 카드사 상품이 아닌 계산 엔진 검증용 가상 데이터**입니다 (자세한 내용은 [data/README.md](./data/README.md)).
 
-공식 API/공공데이터를 조사한 결과 카드 혜택 상세를 다루는 데이터는 없어, 카드사 공식 페이지 크롤링이 필요합니다 (조사 결과는 [data/README.md의 "Step 2 진행 상황"](./data/README.md) 참고). 크롤러 골격은 마련되어 있으나 실제 페이지 파싱은 아직 구현 전입니다:
+공식 API/공공데이터를 조사한 결과 카드 혜택 상세를 다루는 데이터는 없어, 카드사 공식 페이지 크롤링이 필요합니다 (조사 결과는 [data/README.md의 "Step 2 진행 상황"](./data/README.md) 참고).
 
 ```bash
-npm run crawl:cards          # robots.txt 허용된 대상 전체 dry-run
-npm run crawl:cards shinhan  # 특정 카드사만 dry-run
+npm run crawl:cards          # robots.txt 허용된(신한/KB) 대상에서 표 추출
+npm run crawl:cards shinhan  # 특정 카드사만 실행
 ```
 
 - 대상/허용여부 목록: [scripts/crawl-cards/targets.ts](./scripts/crawl-cards/targets.ts)
-- 실제 파싱 로직 구현 위치: [scripts/crawl-cards/parse.ts](./scripts/crawl-cards/parse.ts) (이슈어별 실제 페이지 구조를 확인한 뒤 구현 필요)
+- 표 추출 로직: [scripts/crawl-cards/extract.ts](./scripts/crawl-cards/extract.ts) — 연회비 표, 전월실적 구간 표 등을 구조화해 `scripts/crawl-cards/output/<issuerId>.json`에 저장 (참고용 초안, git에는 커밋되지 않음)
+- **카테고리별 할인율/적립률의 `data/cards.seed.json` 반영은 자동화하지 않았습니다** — 카드마다 문장 구조가 달라 자동 변환 시 잘못된 숫자를 만들 위험이 커서, 추출된 표를 보고 사람이 직접 반영해야 합니다 (자세한 이유는 [data/README.md](./data/README.md) 참고)
 
 데이터가 갱신되면:
 

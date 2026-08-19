@@ -28,7 +28,11 @@ export const CRAWL_TARGETS: CrawlTarget[] = [
     issuerId: "shinhan",
     issuerName: "신한카드",
     robotsTxtUrl: "https://www.shinhancard.com/robots.txt",
-    sampleUrl: "https://www.shinhancard.com/pconts/html/card/main.html",
+    // 신한카드 Deep Dream 체크 카드 상세페이지 (검증된 실제 URL). 카드 목록
+    // 페이지(main.html)는 링크가 JS 템플릿으로 채워져 정적 크롤링으로는
+    // 개별 카드 URL을 찾기 어려워, 개별 카드 상세페이지를 샘플로 사용한다.
+    sampleUrl:
+      "https://www.shinhancard.com/pconts/html/card/apply/check/1187959_2206.html",
     status: "allowed",
     note: "/pconts/html/benefit/, /card/ 등 카드·혜택 경로가 범용 User-Agent에 명시적으로 Allow 되어 있음.",
   },
@@ -36,7 +40,9 @@ export const CRAWL_TARGETS: CrawlTarget[] = [
     issuerId: "kb",
     issuerName: "KB국민카드",
     robotsTxtUrl: "https://card.kbcard.com/robots.txt",
-    sampleUrl: "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0047",
+    // KB국민 Easy all 티타늄카드 상세페이지 (검증된 실제 URL, 연회비 표 포함).
+    sampleUrl:
+      "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=09256&mainCC=a",
     status: "allowed",
     note: "User-agent: * 기준 /CRD/, /home, /cards 등 주요 경로가 Allow. 관리자성 경로(/MKB/)만 차단.",
   },
