@@ -32,13 +32,23 @@ npm run test    # vitest 단위 테스트 (계산 엔진, 스토어 안전장치
 
 `data/cards.seed.json`, `data/subscriptions.seed.json`은 **실제 카드사 상품이 아닌 계산 엔진 검증용 가상 데이터**입니다 (자세한 내용은 [data/README.md](./data/README.md)).
 
-실제 카드사 데이터로 교체하는 작업(공식 API/공공데이터 조사, 필요 시 크롤링 보조)은 아직 진행 전이며, [DEV_PROMPTS.md](./DEV_PROMPTS.md)의 Step 2에서 다룹니다. 데이터가 교체되면:
+공식 API/공공데이터를 조사한 결과 카드 혜택 상세를 다루는 데이터는 없어, 카드사 공식 페이지 크롤링이 필요합니다 (조사 결과는 [data/README.md의 "Step 2 진행 상황"](./data/README.md) 참고). 크롤러 골격은 마련되어 있으나 실제 페이지 파싱은 아직 구현 전입니다:
+
+```bash
+npm run crawl:cards          # robots.txt 허용된 대상 전체 dry-run
+npm run crawl:cards shinhan  # 특정 카드사만 dry-run
+```
+
+- 대상/허용여부 목록: [scripts/crawl-cards/targets.ts](./scripts/crawl-cards/targets.ts)
+- 실제 파싱 로직 구현 위치: [scripts/crawl-cards/parse.ts](./scripts/crawl-cards/parse.ts) (이슈어별 실제 페이지 구조를 확인한 뒤 구현 필요)
+
+데이터가 갱신되면:
 
 1. `data/cards.seed.json`, `data/subscriptions.seed.json`을 새 데이터로 교체
 2. [src/features/cards/types.ts](./src/features/cards/types.ts)의 `Card`/`BenefitRule`/`PerformanceTier` 형태를 그대로 따르는지 확인
 3. `npm run test`로 계산 엔진 회귀 테스트 통과 확인
 
-현재는 수동 교체 방식이며, 자동 스케줄링/크롤러/관리자 화면은 v2 로드맵입니다.
+자동 스케줄링/관리자 화면은 v2 로드맵입니다.
 
 ## 프로젝트 구조
 
